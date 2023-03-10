@@ -11,6 +11,7 @@ import Cart from '@components/Cart';
 import Favourites from '@components/Favourites';
 import Abouts from '@components/Abouts';
 import Profile from '@components/Profile';
+import Category from '@components/Catalog/components/Category';
 import { ROUTES } from './constants';
 
 const Routes = () =>
@@ -27,7 +28,16 @@ const Routes = () =>
             path: generateGithubPagesRoutes(ROUTES.CATALOG),
             children: [
                 {
-                    path: ':idCatalog',
+                    path: ':idCategory',
+                    element: <Category />,
+                },
+            ],
+        },
+        {
+            path: generateGithubPagesRoutes(ROUTES.CATALOG),
+            children: [
+                {
+                    path: ':idCategory/:idProduct',
                     element: <ProductCatalog />,
                 },
             ],

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getCategoryList } from '@store/category/selectors';
 import { useAppDispatch } from '@store';
 import { fetchCategoryList } from '@store/category';
+import { useNavigate } from 'react-router-dom';
 import { MenuContainer, CategoryContainer, MenuContent, Text } from './style';
 
 const Menu = () => {
@@ -12,13 +13,16 @@ const Menu = () => {
     useEffect(() => {
         dispatch(fetchCategoryList());
     }, [dispatch]);
+    const navigate = useNavigate();
 
     return (
         <MenuContainer>
             <MenuContent>
                 <CategoryContainer>
                     {categoryList.map((category) => (
-                        <Text key={category.name}>{category.name}</Text>
+                        <Text onClick={() => navigate(`${category.id}`)} key={category.name}>
+                            {category.name}
+                        </Text>
                     ))}
                 </CategoryContainer>
             </MenuContent>
