@@ -19,6 +19,7 @@ import {
     EllipseColor,
     New,
 } from './styled';
+import { ROUTES } from '../../../../../routes/constants';
 
 interface IProduct {
     id: number;
@@ -45,7 +46,7 @@ export const labelSymbol = {
 };
 const Product = ({ image, isNew, name, sizes, colors, prices, id, heightImage }: IProduct) => {
     const navigate = useNavigate();
-    const navId = () => navigate(`${id}`);
+    const navId = () => navigate(`${ROUTES.CATEGORY}/${id}`);
 
     const [isActiveFavouritesButton, setIsActiveFavouritesButton] = useState(false);
     const toggleActiveFavouritesButton = () => setIsActiveFavouritesButton(!isActiveFavouritesButton);
